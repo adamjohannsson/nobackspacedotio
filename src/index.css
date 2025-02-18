@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    @apply bg-white text-gray-900 antialiased;
+  }
+
+  ::selection {
+    @apply bg-gray-900/10;
+  }
+
+  /* Font Classes */
+  .font-sans {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .font-roboto-mono {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .font-courier-prime {
+    font-family: 'Courier Prime', monospace;
+  }
+
+  /* Apply global font class to root */
+  [data-font="sans"] {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  [data-font="montserrat"] {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  [data-font="roboto-mono"] {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  [data-font="courier-prime"] {
+    font-family: 'Courier Prime', monospace;
+  }
+
+  /* Theme Styles */
+  [data-theme="dark"] {
+    @apply bg-[#111111];
+  }
+
+  [data-theme="dark"] body {
+    @apply bg-[#111111] text-gray-50;
+  }
+
+  [data-theme="dark"] ::selection {
+    @apply bg-white/10;
+  }
+
+  [data-theme="dim"] {
+    @apply bg-gray-800;
+  }
+
+  [data-theme="dim"] body {
+    @apply bg-gray-800 text-gray-100;
+  }
+
+  [data-theme="dim"] ::selection {
+    @apply bg-white/10;
+  }
+
+  [data-theme="cream"] {
+    @apply bg-[#FDF6E3];
+  }
+
+  [data-theme="cream"] body {
+    @apply bg-[#FDF6E3] text-[#586E75];
+  }
+
+  [data-theme="cream"] ::selection {
+    @apply bg-[#586E75]/10;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg transition-all duration-200 font-medium;
+  }
+
+  .btn-primary {
+    @apply bg-gray-900 text-white hover:bg-gray-800 active:bg-gray-950;
+    [data-theme="dark"] & {
+      @apply bg-white text-[#111111] hover:bg-gray-100;
+    }
+    [data-theme="dim"] & {
+      @apply bg-gray-100 text-gray-900 hover:bg-white;
+    }
+    [data-theme="cream"] & {
+      @apply bg-[#586E75] text-[#FDF6E3] hover:bg-[#657B83];
+    }
+  }
+
+  .btn-secondary {
+    @apply bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 active:bg-gray-100;
+    [data-theme="dark"] & {
+      @apply bg-[#1a1a1a] text-white border-[#222222] hover:bg-[#222222];
+    }
+    [data-theme="dim"] & {
+      @apply bg-gray-700 text-white border-gray-600 hover:bg-gray-600;
+    }
+    [data-theme="cream"] & {
+      @apply bg-[#EEE8D5] text-[#586E75] border-[#93A1A1] hover:bg-[#FDF6E3];
+    }
+  }
+
+  /* Editor Theme Styles */
+  .editor-container {
+    @apply bg-white;
+    [data-theme="dark"] & {
+      @apply bg-[#111111] text-gray-50;
+    }
+    [data-theme="dim"] & {
+      @apply bg-gray-800 text-gray-100;
+    }
+    [data-theme="cream"] & {
+      @apply bg-[#FDF6E3] text-[#586E75];
+    }
+  }
+
+  .editor-header {
+    @apply bg-white/80 backdrop-blur-sm border-gray-100;
+    [data-theme="dark"] & {
+      @apply bg-[#111111]/80 border-[#222222];
+    }
+    [data-theme="dim"] & {
+      @apply bg-gray-800/80 border-gray-700;
+    }
+    [data-theme="cream"] & {
+      @apply bg-[#FDF6E3]/80 border-[#93A1A1];
+    }
+  }
+
+  .editor-sidebar {
+    @apply bg-white border border-gray-200;
+    [data-theme="dark"] & {
+      @apply bg-[#111111] border-[#222222];
+    }
+    [data-theme="dim"] & {
+      @apply bg-gray-800 border-gray-700;
+    }
+    [data-theme="cream"] & {
+      @apply bg-[#FDF6E3] border-[#93A1A1];
+    }
+  }
+
+  .editor-input {
+    @apply bg-transparent;
+    [data-theme="dark"] & {
+      @apply placeholder:text-gray-500;
+    }
+    [data-theme="dim"] & {
+      @apply placeholder:text-gray-400;
+    }
+    [data-theme="cream"] & {
+      @apply placeholder:text-[#93A1A1];
+    }
+  }
+
+  /* View Toggle Button Styles */
+  .view-toggle-button {
+    @apply p-2 rounded-lg transition-colors;
+    &.active {
+      @apply bg-gray-100;
+      [data-theme="dark"] & {
+        @apply bg-gray-800/80 text-white;
+      }
+      [data-theme="dim"] & {
+        @apply bg-gray-600 text-white;
+      }
+      [data-theme="cream"] & {
+        @apply bg-[#EEE8D5] text-[#586E75];
+      }
+    }
+    &:not(.active) {
+      @apply hover:bg-gray-100/50;
+      [data-theme="dark"] & {
+        @apply hover:bg-gray-800/50;
+      }
+      [data-theme="dim"] & {
+        @apply hover:bg-gray-600/50;
+      }
+      [data-theme="cream"] & {
+        @apply hover:bg-[#EEE8D5]/50;
+      }
+    }
+  }
+}
